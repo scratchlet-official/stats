@@ -45,8 +45,8 @@
         }
         
         .logo-text {
-            font-family: "极速飞艇 One", sans-serif;
-            font-size: 2em;
+            font-family: "Titan One", sans-serif;
+            font-size: 2.5em;
             color: #FFFFFF;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
@@ -68,11 +68,13 @@
             font-size: 1em;
             text-decoration: none;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 极速飞艇, 0.2);
         }
         
         .nav-btn:hover {
             background: white;
             transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
         }
         
         .main-container {
@@ -116,15 +118,15 @@
             font-weight: 700;
             color: #FF8C00;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            margin-bottom: 5px;
         }
         
         .stat-label {
             color: rgba(255, 255, 255, 0.9);
             font-size: 1.1em;
-            margin-top: 5px;
         }
         
-        .chart-section {
+        .progress-section {
             background: rgba(255, 255, 255, 0.1);
             padding: 30px;
             border-radius: 20px;
@@ -133,102 +135,86 @@
             margin: 30px 0;
         }
         
-        .chart-title {
+        .progress-title {
             font-family: "Titan One", sans-serif;
             font-size: 1.8em;
             color: #FFFFFF;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
             margin-bottom: 20px;
-            text-align: center;
-        }
-        
-        .chart-container {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 15px;
-            height: 200px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            gap: 10px;
-        }
-        
-        .chart-bar {
-            background: linear-gradient(to top, #FF8C00, #FFA500);
-            width: 40px;
-            border-radius: 8px 8px 0 0;
-            position: relative;
-        }
-        
-        .chart-label {
-            position: absolute;
-            bottom: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.8em;
-            color: rgba(255, 255, 255, 0.8);
-        }
-        
-        .game-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .game-stat {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .game-name {
-            font-family: "Titan One", sans-serif;
-            color: #FFFFFF;
-            margin-bottom: 15px;
         }
         
         .progress-bar {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             height: 20px;
             border-radius: 10px;
             overflow: hidden;
-            margin: 10px 0;
+            margin: 15px 0;
         }
         
         .progress-fill {
-            background: linear-gradient(to right, #FF8C00, #FFA500);
+            background: #FF8C00;
             height: 100%;
             border-radius: 10px;
+            transition: width 0.3s ease;
         }
         
-        .back-btn {
-            display: block;
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 5px;
+        }
+        
+        .chart-container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            margin: 30px 0;
+        }
+        
+        .back-link {
             text-align: center;
-            margin: 30px auto;
-            padding: 12px 25px;
-            background: rgba(255, 255, 255, 0.9);
-            color: #FF8C00;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: "Nunito", sans-serif;
-            font-weight: 700;
+            margin-top: 40px;
+        }
+        
+        .back-link a {
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
+            font-weight: 600;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
             transition: all 0.3s ease;
         }
         
-        .back-btn:hover {
-            background: white;
-            transform: translateY(-2px);
+        .back-link a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .nav-buttons {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
         <div class="logo">
-            <div class="logo-text">Scratchlet Stats</div>
+            <div class="logo-text">Scratchlet</div>
         </div>
         <div class="nav-buttons">
             <a href="https://scratchlet-official.github.io/home/" class="nav-btn">🏠 Home</a>
@@ -265,93 +251,119 @@
                 <div class="stat-number" id="playTime">0h</div>
                 <div class="stat-label">Play Time</div>
             </div>
-        </div>
-
-        <div class="chart-section">
-            <h2 class="chart-title">Weekly Performance</h2>
-            <div class="chart-container" id="weeklyChart">
-                <!-- Chart bars will be generated by JavaScript -->
+            
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-number" id="totalCoins">0</div>
+                <div class="stat-label">Total Coins Earned</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-number" id="level">1</div>
+                <div class="stat-label">Player Level</div>
             </div>
         </div>
 
-        <div class="chart-section">
-            <h2 class="chart-title">Game Performance</h2>
-            <div class="game-stats">
-                <div class="game-stat">
-                    <h3 class="game-name">Battle Royale</h3>
-                    <div>Wins: <span id="brWins">0</span></div>
-                    <div>Games: <span id="brGames">0</span></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+        <div class="progress-section">
+            <h2 class="progress-title">Level Progress</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="levelProgressBar" style="width: 0%"></div>
+            </div>
+            <div class="progress-info">
+                <span>Level <span id="currentLevel">1</span></span>
+                <span><span id="currentXP">0</span>/<span id="nextLevelXP">100</span> XP</span>
+            </div>
+        </div>
+
+        <div class="progress-section">
+            <h2 class="progress-title">Game Performance</h2>
+            <div style="margin: 20px 0;">
+                <div class="progress-info">
+                    <span>Battle Royale Wins:</span>
+                    <span id="battleRoyaleWins">0</span>
                 </div>
-                
-                <div class="game-stat">
-                    <h3 class="game-name">Gold Quest</h3>
-                    <div>Wins: <span id="gqWins">0</span></div>
-                    <div>Games: <span id="gqGames">0</span></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="battleRoyaleProgress" style="width: 0%"></div>
                 </div>
-                
-                <div class="game-stat">
-                    <h3 class="game-name">Factory</h3>
-                    <div>Wins: <span id="faWins">0</span></div>
-                    <div>Games: <span id="faGames">0</span></div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 0%"></div>
-                    </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <div class="progress-info">
+                    <span>Gold Quest High Score:</span>
+                    <span id="goldQuestScore">0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="goldQuestProgress" style="width: 0%"></div>
+                </div>
+            </div>
+            
+            <div style="margin: 20px 0;">
+                <div class="progress-info">
+                    <span>Factory Production:</span>
+                    <span id="factoryProduction">0</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="factoryProgress" style="width: 0%"></div>
                 </div>
             </div>
         </div>
 
-        <a href="https://scratchlet-official.github.io/home/" class="back-btn">← Back to Home</a>
+        <div class="back-link">
+            <a href="https://scratchlet-official.github.io/home/">← Back to Home</a>
+        </div>
     </div>
 
     <script>
-        // Generate mock stats
-        function generateStats() {
-            // Total stats
-            document.getElementById('totalGames').textContent = Math.floor(Math.random() * 500);
-            document.getElementById('totalScore').textContent = Math.floor(Math.random() * 100000).toLocaleString();
-            document.getElementById('winRate').textContent = Math.floor(Math.random() * 100) + '%';
-            document.getElementById('playTime').textContent = Math.floor(Math.random() * 200) + 'h';
+        // Cross-device storage simulation
+        const ScratchletDB = {
+            async loadData(key) {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : null;
+            }
+        };
+
+        // Load and display statistics
+        document.addEventListener('DOMContentLoaded', async function() {
+            const userStats = await ScratchletDB.loadData('userStats') || {
+                level: 1,
+                coins: 0,
+                gamesPlayed: 0,
+                totalScore: 0,
+                winRate: 0,
+                playTime: 0,
+                experience: 0,
+                battleRoyaleWins: 0,
+                goldQuestScore: 0,
+                factoryProduction: 0
+            };
+
+            // Update statistics
+            document.getElementById('totalGames').textContent = userStats.gamesPlayed.toLocaleString();
+            document.getElementById('totalScore').textContent = userStats.totalScore.toLocaleString();
+            document.getElementById('winRate').textContent = userStats.winRate + '%';
+            document.getElementById('playTime').textContent = userStats.playTime + 'h';
+            document.getElementById('totalCoins').textContent = userStats.coins.toLocaleString();
+            document.getElementById('level').textContent = userStats.level;
             
-            // Game-specific stats
-            const games = ['br', 'gq', 'fa'];
-            games.forEach(game => {
-                const wins = Math.floor(Math.random() * 100);
-                const total = wins + Math.floor(Math.random() * 50);
-                const winRate = total > 0 ? Math.round((wins / total) * 100) : 0;
-                
-                document.getElementById(`${game}Wins`).textContent = wins;
-                document.getElementById(`${game}Games`).textContent = total;
-                document.querySelector(`#${game}Wins`).closest('.game-stat').querySelector('.progress-fill').style.width = winRate + '%';
-            });
+            // Update level progress
+            const xpNeeded = userStats.level * 100;
+            const progressPercent = (userStats.experience / xpNeeded) * 100;
+            document.getElementById('levelProgressBar').style.width = progressPercent + '%';
+            document.getElementById('currentLevel').textContent = userStats.level;
+            document.getElementById('currentXP').textContent = userStats.experience;
+            document.getElementById('nextLevelXP').textContent = xpNeeded;
             
-            // Generate weekly chart
-            const chartContainer = document.getElementById('weeklyChart');
-            chartContainer.innerHTML = '';
-            const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+            // Update game-specific stats
+            document.getElementById('battleRoyaleWins').textContent = userStats.battleRoyaleWins || 0;
+            document.getElementById('goldQuestScore').textContent = userStats.goldQuestScore || 0;
+            document.getElementById('factoryProduction').textContent = userStats.factoryProduction || 0;
             
-            days.forEach(day => {
-                const height = Math.floor(Math.random() * 150) + 50;
-                const bar = document.createElement('div');
-                bar.className = 'chart-bar';
-                bar.style.height = height + 'px';
-                
-                const label = document.createElement('div');
-                label.className = 'chart-label';
-                label.textContent = day;
-                
-                bar.appendChild(label);
-                chartContainer.appendChild(bar);
-            });
-        }
-        
-        // Load stats when page loads
-        document.addEventListener('DOMContentLoaded', generateStats);
+            // Update progress bars for games
+            document.getElementById('battleRoyaleProgress').style.width = Math.min((userStats.battleRoyaleWins || 0) / 50 * 100, 100) + '%';
+            document.getElementById('goldQuestProgress').style.width = Math.min((userStats.goldQuestScore || 0) / 5000 * 100, 100) + '%';
+            document.getElementById('factoryProgress').style.width = Math.min((userStats.factoryProduction || 0) / 1000 * 100, 100) + '%';
+        });
     </script>
 </body>
 </html>
