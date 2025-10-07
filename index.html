@@ -1730,7 +1730,7 @@ function hslToRgb(h,s,l){
     return Math.round(255 * color);
   };
   return [f(0), f(8), f(4)];
-}
+};
 
 // ---------- Get applied colors from Settings ----------
 let appliedColors = JSON.parse(localStorage.getItem('appliedColors') || '{"primary":{"h":30,"s":100,"l":50},"secondary":{"h":45,"s":100,"l":50}}');
@@ -1749,7 +1749,7 @@ function applySettingsBackground(){
 
   document.body.style.background = bg;
   document.body.style.backgroundSize = "40px 40px";
-}
+};
 
 // ---------- Initialize ----------
 applySettingsBackground();
